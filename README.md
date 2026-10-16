@@ -1,5 +1,10 @@
 # Skrib.
 
+[![License](https://img.shields.io/badge/license-PolyForm%20Noncommercial-blue)](LICENSE)
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6)
+[![Live](https://img.shields.io/badge/live-skrib.my.id-4f46e5)](https://skrib.my.id)
+
 **A calm place to read and write.** Skrib is a multi-author blogging platform with a wide, comfortable reading design, a Medium-style editor, and a social layer on top: follows, likes, comments, notes, and notifications.
 
 **Live:** [skrib.my.id](https://skrib.my.id)
@@ -70,6 +75,7 @@ src/
 - Security lives in the database: RLS on every table, column-level grants, restrictive policies for suspended accounts, and `security definer` functions kept in a private schema.
 - Abuse protection is built in: per-user rate limits in Postgres, strict input limits in the app, Zod, and CHECK constraints, and a report flow.
 - Schema changes are numbered SQL files in `supabase/migrations/` (100+ so far).
+- A longer write-up: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Run it locally
 
@@ -107,6 +113,19 @@ Useful checks:
 npx tsc --noEmit
 npm run lint
 ```
+
+## Decisions
+
+The choices that shaped the project, and why. More in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
+- **Security in the database, not the UI.** Row Level Security, column grants, and private-schema functions carry the protection, so a bug in the interface cannot open a hole.
+- **Function separate from UI, enforced by ESLint.** The interface can be redesigned freely without touching logic, and the linter fails the build if the layers mix.
+- **Rate limiting in Postgres.** Limits are per user and per action, edited in a table, with no extra service or bill. Fixed windows are accepted as good enough at this size.
+- **Server-rendered articles from stored JSON.** Readers get React elements with no HTML injection and no editor code in the bundle.
+- **A turn-based edit lock instead of real-time co-editing.** One pen passed between authors gives safe shared writing without a WebSocket server.
+- **Ranking without AI.** Popular and For you are plain SQL over likes, saves, reads, and follows, with a time decay.
+- **Counts-only analytics.** Authors see views and reads per day, and nothing identifies a reader.
+- **A hand-written service worker.** It does one thing, serving Saved stories offline, and it deletes its copies when the account changes.
 
 ## Design principles
 

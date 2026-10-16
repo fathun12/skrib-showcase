@@ -1,0 +1,596 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-like: var(--like);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-source-serif);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #FAFAF8;
+  --foreground: #1A1A1A;
+  --surface: #FFFFFF;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A1A;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
+  --primary: #4F46E5;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F1F0EC;
+  --secondary-foreground: #1A1A1A;
+  --muted: #F1F0EC;
+  --muted-foreground: #6B6B66;
+  --accent: #EEF0FF;
+  --accent-foreground: #1A1A1A;
+  --destructive: #DC2626;
+  --like: #E11D48;
+  /* Highlight and text colors of posts (names are stored; shades live here). */
+  --hl-yellow: rgba(250, 204, 21, 0.45);
+  --hl-green: rgba(74, 222, 128, 0.4);
+  --hl-blue: rgba(96, 165, 250, 0.35);
+  --hl-pink: rgba(244, 114, 182, 0.35);
+  --tc-red: #DC2626;
+  --tc-orange: #C2410C;
+  --tc-green: #15803D;
+  --tc-blue: #2563EB;
+  --tc-purple: #7E22CE;
+  --border: #E8E6E1;
+  --input: #E8E6E1;
+  --ring: #4F46E5;
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: #0F0F11;
+  --foreground: #ECECEA;
+  --surface: #17171A;
+  --card: #17171A;
+  --card-foreground: #ECECEA;
+  --popover: #17171A;
+  --popover-foreground: #ECECEA;
+  --primary: #8B8CF5;
+  --primary-foreground: #0F0F11;
+  --secondary: #1F1F24;
+  --secondary-foreground: #ECECEA;
+  --muted: #1F1F24;
+  --muted-foreground: #9A9AA3;
+  --accent: #1F2040;
+  --accent-foreground: #ECECEA;
+  --destructive: #F87171;
+  --like: #FB7185;
+  --hl-yellow: rgba(250, 204, 21, 0.3);
+  --hl-green: rgba(74, 222, 128, 0.28);
+  --hl-blue: rgba(96, 165, 250, 0.3);
+  --hl-pink: rgba(244, 114, 182, 0.3);
+  --tc-red: #F87171;
+  --tc-orange: #FB923C;
+  --tc-green: #4ADE80;
+  --tc-blue: #60A5FA;
+  --tc-purple: #C084FC;
+  --border: #2A2A30;
+  --input: #2A2A30;
+  --ring: #8B8CF5;
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+@layer components {
+  .prose-article {
+    font-family: var(--font-source-serif), Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--foreground);
+  }
+
+  .prose-article > * + * {
+    margin-top: 1.5em;
+  }
+
+  .prose-article p {
+    text-wrap: pretty;
+  }
+
+  .prose-article h1,
+  .prose-article h2,
+  .prose-article h3 {
+    text-wrap: balance;
+    font-weight: 700;
+  }
+
+  .prose-article h1 {
+    font-size: 33px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .prose-article h2 {
+    font-size: 26px;
+    line-height: 1.25;
+    margin-top: 2em;
+  }
+
+  .prose-article h3 {
+    font-size: 21px;
+    line-height: 1.3;
+    font-weight: 600;
+    margin-top: 1.75em;
+  }
+
+  .prose-article a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose-article blockquote {
+    border-left: 3px solid var(--primary);
+    padding-left: 1.25em;
+    font-style: italic;
+    color: var(--muted-foreground);
+  }
+
+  .prose-article ul,
+  .prose-article ol {
+    padding-left: 1.5em;
+  }
+
+  .prose-article ul {
+    list-style: disc;
+  }
+
+  .prose-article ol {
+    list-style: decimal;
+  }
+
+  .prose-article li + li {
+    margin-top: 0.5em;
+  }
+
+  /* Section divider: three centered dots, like Medium. */
+  .prose-article hr {
+    border: 0;
+    height: auto;
+    overflow: visible;
+    margin: 2.5em 0;
+    text-align: center;
+    color: var(--muted-foreground);
+  }
+
+  .prose-article hr::after {
+    content: "•••";
+    font-size: 0.9em;
+    letter-spacing: 0.6em;
+    /* Same as the letter-spacing, so the dots look centered. */
+    padding-left: 0.6em;
+  }
+
+  /* Arabic block: right-to-left quote inside a post of any language. dir="rtl"
+     and lang="ar" come from the node itself, so text-align: start is the
+     right edge. Sizes are in em, so the reading size setting scales them. */
+  .prose-article [data-arabic-block] {
+    font-family: var(--font-naskh-arabic), "Traditional Arabic", serif;
+    font-size: 1.15em;
+    line-height: 2;
+    text-align: start;
+  }
+
+  .prose-article [data-arabic-block] > * + * {
+    margin-top: 1em;
+  }
+
+  .prose-article code {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.9em;
+    background: var(--muted);
+    padding: 0.15em 0.4em;
+    border-radius: 0.375rem;
+  }
+
+  .prose-article img {
+    border-radius: 0.75rem;
+    max-width: 100%;
+    height: auto;
+  }
+
+    /* "Small" images are narrower than the text column and centered. */
+  .prose-article [data-align="small"] {
+    max-width: 480px;
+    margin-inline: auto;
+  }
+
+  /* "Wide" images break out of the text column on large screens. The editor
+     node view and the reader both set data-align on the image block. */
+  @media (min-width: 1024px) {
+    .prose-article [data-align="wide"] {
+      margin-inline: -120px;
+    }
+  }
+
+  .prose-article figcaption {
+    font-family: var(--font-inter), sans-serif;
+    font-size: 13px;
+    text-align: center;
+    color: var(--muted-foreground);
+    margin-top: 0.75em;
+  }
+
+  /* Footnotes: a small superscript number in the text, and a smaller, muted
+     list of notes at the end. Shared by the reader and the editor canvas. */
+  .prose-article sup {
+    font-size: 0.7em;
+    line-height: 0;
+  }
+
+  .prose-article a.footnote-ref {
+    font-family: var(--font-inter), sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    padding-inline: 0.15em;
+  }
+
+  .prose-article ol.footnotes {
+    margin-top: 3em;
+    padding-top: 1.25em;
+    border-top: 1px solid var(--border);
+    font-size: 0.8em;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+    list-style: decimal;
+    padding-left: 1.5em;
+    overflow-wrap: anywhere;
+  }
+
+  .prose-article ol.footnotes li > * + * {
+    margin-top: 0.5em;
+  }
+
+  .prose-article ol.footnotes li[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  /* Highlight (marker) and text colors. */
+  .prose-article mark {
+    color: inherit;
+    background: var(--hl-yellow);
+    border-radius: 0.2em;
+    padding-inline: 0.1em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  .prose-article mark[data-color="green"] {
+    background: var(--hl-green);
+  }
+
+  .prose-article mark[data-color="blue"] {
+    background: var(--hl-blue);
+  }
+
+  .prose-article mark[data-color="pink"] {
+    background: var(--hl-pink);
+  }
+
+  .prose-article [data-text-color="red"] {
+    color: var(--tc-red);
+  }
+
+  .prose-article [data-text-color="orange"] {
+    color: var(--tc-orange);
+  }
+
+  .prose-article [data-text-color="green"] {
+    color: var(--tc-green);
+  }
+
+  .prose-article [data-text-color="blue"] {
+    color: var(--tc-blue);
+  }
+
+  .prose-article [data-text-color="purple"] {
+    color: var(--tc-purple);
+  }
+
+  @media (min-width: 768px) {
+    .prose-article {
+      font-size: 20px;
+      line-height: 1.75;
+    }
+    .prose-article h1 {
+      font-size: 46px;
+    }
+    .prose-article h2 {
+      font-size: 30px;
+    }
+    .prose-article h3 {
+      font-size: 24px;
+    }
+    .prose-article figcaption {
+      font-size: 14px;
+    }
+  }
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  color: var(--muted-foreground);
+}
+
+
+/* ---- Reading comfort (article page only) ------------------------------
+   Unlayered on purpose: unlayered CSS beats @layer components and utilities,
+   so these rules can override the article typography and the sepia tokens.
+   The editor never has .reading-page, so it keeps its own sizes. */
+.reading-page .prose-article {
+  font-size: calc(18px * var(--reading-scale, 1));
+}
+.reading-page .prose-article h2 {
+  font-size: calc(26px * var(--reading-scale, 1));
+}
+.reading-page .prose-article h3 {
+  font-size: calc(21px * var(--reading-scale, 1));
+}
+@media (min-width: 768px) {
+  .reading-page .prose-article {
+    font-size: calc(20px * var(--reading-scale, 1));
+  }
+  .reading-page .prose-article h2 {
+    font-size: calc(30px * var(--reading-scale, 1));
+  }
+  .reading-page .prose-article h3 {
+    font-size: calc(24px * var(--reading-scale, 1));
+  }
+}
+
+/* Sepia: the whole page, but only while an article with sepia on is open. */
+html:has(.reading-page[data-sepia="on"]) {
+  --background: #f4ecd8;
+  --foreground: #3b2f20;
+  --surface: #fbf5e6;
+  --card: #fbf5e6;
+  --card-foreground: #3b2f20;
+  --popover: #fbf5e6;
+  --popover-foreground: #3b2f20;
+  --primary: #9a4a12;
+  --primary-foreground: #ffffff;
+  --secondary: #eadfc6;
+  --secondary-foreground: #3b2f20;
+  --muted: #eadfc6;
+  --muted-foreground: #6b5b43;
+  --accent: #eadfc6;
+  --accent-foreground: #3b2f20;
+  --border: #dccfb2;
+  --input: #dccfb2;
+  --ring: #9a4a12;
+}
+html.dark:has(.reading-page[data-sepia="on"]) {
+  --background: #1c1712;
+  --foreground: #d9cdb6;
+  --surface: #241e17;
+  --card: #241e17;
+  --card-foreground: #d9cdb6;
+  --popover: #241e17;
+  --popover-foreground: #d9cdb6;
+  --primary: #e0a458;
+  --primary-foreground: #1c1712;
+  --secondary: #2b241b;
+  --secondary-foreground: #d9cdb6;
+  --muted: #2b241b;
+  --muted-foreground: #a89b84;
+  --accent: #2b241b;
+  --accent-foreground: #d9cdb6;
+  --border: #3a3126;
+  --input: #3a3126;
+  --ring: #e0a458;
+}
+
+/* "On this page": a jumped-to heading must not sit under the sticky header. */
+.prose-article :is(h2, h3)[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Reading font: serif is the default of .prose-article. The reading menu can
+   switch the article text to sans. Captions, code, footnote numbers and the
+   Arabic block set their own fonts, so they do not change. */
+.reading-page[data-font="sans"] .prose-article {
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Find and replace in the editor: every match, and the selected one. */
+.find-and-replace-result {
+  background: color-mix(in oklab, var(--primary) 22%, transparent);
+  border-radius: 0.2em;
+}
+.find-and-replace-result-current {
+  background: color-mix(in oklab, var(--primary) 50%, transparent);
+  outline: 2px solid var(--primary);
+}
+
+/* The footnote number whose panel is open. */
+.prose-article a.footnote-ref[data-open] {
+  background: color-mix(in oklab, var(--primary) 18%, transparent);
+  border-radius: 0.35em;
+}
+
+/* Link to a section: a small "#" after an H2 or H3, shown on hover or focus
+   (always faint on touch screens, where there is no hover). */
+.prose-article a.heading-anchor {
+  margin-left: 0.4em;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.7em;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 150ms;
+  user-select: none;
+}
+.prose-article a.heading-anchor::before {
+  content: "#";
+}
+.prose-article :is(h2, h3):hover > a.heading-anchor,
+.prose-article a.heading-anchor:focus-visible {
+  opacity: 1;
+}
+.prose-article a.heading-anchor:hover {
+  color: var(--primary);
+}
+@media (hover: none) {
+  .prose-article a.heading-anchor {
+    opacity: 0.45;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .prose-article a.heading-anchor {
+    transition: none;
+  }
+}
+
+/* Crop dialog skin for react-image-crop (ImageCropDialog). The doubled class
+   makes these rules win over the library CSS whatever the import order. */
+.skrib-crop.skrib-crop {
+  --rc-drag-handle-size: 14px;
+  --rc-drag-handle-mobile-size: 22px;
+  --rc-drag-handle-bg-colour: #fff;
+  --rc-border-color: rgb(255 255 255 / 0.9);
+  --rc-focus-color: #4f46e5;
+}
+
+/* A calm solid outline instead of the moving dashed line. */
+.skrib-crop.skrib-crop .ReactCrop .ReactCrop__crop-selection {
+  background-image: none;
+  animation: none;
+  outline: 1.5px solid rgb(255 255 255 / 0.95);
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.25),
+    0 6px 24px rgb(0 0 0 / 0.35);
+}
+
+/* Small round white dots instead of square handles. */
+.skrib-crop.skrib-crop .ReactCrop .ReactCrop__drag-handle {
+  background-color: #fff;
+  border: 0;
+  border-radius: 9999px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.45);
+}
+.skrib-crop.skrib-crop .ReactCrop .ReactCrop__drag-handle:focus-visible {
+  outline: 2px solid var(--rc-focus-color);
+  outline-offset: 2px;
+}
+
+/* The thirds grid shows only while the pointer is on the box. */
+.skrib-crop .ReactCrop__rule-of-thirds-vt,
+.skrib-crop .ReactCrop__rule-of-thirds-hz {
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+.skrib-crop .ReactCrop__crop-selection:hover .ReactCrop__rule-of-thirds-vt,
+.skrib-crop .ReactCrop__crop-selection:hover .ReactCrop__rule-of-thirds-hz,
+.skrib-crop .ReactCrop__crop-selection:active .ReactCrop__rule-of-thirds-vt,
+.skrib-crop .ReactCrop__crop-selection:active .ReactCrop__rule-of-thirds-hz {
+  opacity: 1;
+}
+
+
+/* The paragraph that "Listen" is reading now. The shadow adds padding
+   without moving the text. */
+/* The reader's highlights are drawn in a layer inside the article body, behind
+   its text. isolation makes the body its own stacking context, so the layer
+   stays above the page (sepia) background and below the text. */
+[data-reading-body] {
+  position: relative;
+  isolation: isolate;
+}
+
+/* The cursor is inherited by the text inside, so the whole passage shows it. */
+[data-reading-body][data-over-highlight] {
+  cursor: pointer;
+}
+
+[data-reading-body] [data-listening] {
+  background-color: color-mix(in srgb, var(--primary) 12%, transparent);
+  border-radius: 0.375rem;
+  box-shadow: 0 0 0 0.375rem color-mix(in srgb, var(--primary) 12%, transparent);
+}
